@@ -1,0 +1,28 @@
+#!/bin/bash
+
+partCount=$(echo "$1" | awk -F"/" '{print NF}')
+mirrorFullPath=""
+if [ $partCount -eq 1 ]; then
+    mirrorFullPath="docker.io/library/$1"
+elif [ $partCount -eq 2 ]; then
+    mirrorFullPath="docker.io/$1"
+else
+    mirrorFullPath="$1"
+fi
+
+sourceSite=$(echo $mirrorFullPath | cut -d '/' -f 1)
+restPath=$(echo $mirrorFullPath | cut -d '/' -f 2-)
+realPath=""
+if [ $sourceSite = "docker.io" ]; then
+    realPath="dockerhub.azk8s.cn/$restPath"
+elif [ $sourceSite = "quay.io" ]; then
+    realPath="quay.azk8s.cn/$restPath"
+elif [ $sourceSite = "gcr.io" ]; then
+    realPath="gcr.azk8s.cn/$restPath"
+else
+    realPath="$sourceSite/$restPath"
+fi
+echo "will pull $1 via $realPath"
+docker pull $realPath
+docker tag $realPath $1
+docker rmi $realPath
