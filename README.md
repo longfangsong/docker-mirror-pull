@@ -8,7 +8,9 @@ chmod +x $SOMEWHERE_IN_YOUR_PATH/docker-mirror-pull
 
 ## upgrade
 
+```shell
 curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > $(which docker-mirror-pull)
+```
 
 ## use
 Just replace all `docker pull` with `docker-mirror-pull`, eg.
