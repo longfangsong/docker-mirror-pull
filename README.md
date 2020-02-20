@@ -5,6 +5,11 @@ docker pull from mirror site [azk8s.cn](azk8s.cn)
 curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > $SOMEWHERE_IN_YOUR_PATH
 chmod +x $SOMEWHERE_IN_YOUR_PATH/docker-mirror-pull
 ```
+
+## upgrade
+
+curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > $(which docker-mirror-pull)
+
 ## use
 Just replace all `docker pull` with `docker-mirror-pull`, eg.
 ```shell
