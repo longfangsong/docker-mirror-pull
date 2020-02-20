@@ -22,7 +22,12 @@ elif [ $sourceSite = "gcr.io" ]; then
 else
     realPath="$sourceSite/$restPath"
 fi
-echo "will pull $1 via $realPath"
-docker pull $realPath
-docker tag $realPath $1
-docker rmi $realPath
+if [ $1 = $realPath ]; then
+    echo "warning: no mirror is used for $1"
+    docker pull $1
+else
+    echo "will pull $1 via $realPath"
+    docker pull $realPath
+    docker tag $realPath $1
+    docker rmi $realPath
+fi
