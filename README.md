@@ -2,14 +2,19 @@
 docker pull from mirror site [azk8s.cn](azk8s.cn)
 ## install
 ```shell
-curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > $SOMEWHERE_IN_YOUR_PATH
-chmod +x $SOMEWHERE_IN_YOUR_PATH/docker-mirror-pull
+curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > ./docker-mirror-pull
+chmod +x ./docker-mirror-pull
+# AND maybe you want to export it into PATH
+sudo mv ./docker-mirror-pull /usr/local/bin/
 ```
 
 ## upgrade
 
 ```shell
-curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > $(which docker-mirror-pull)
+curl https://raw.githubusercontent.com/longfangsong/docker-mirror-pull/master/docker-mirror-pull > ./docker-mirror-pull
+chmod +x ./docker-mirror-pull
+# AND maybe you want to upgrade it in $PATH
+sudo mv ./docker-mirror-pull /usr/local/bin/
 ```
 
 ## use
